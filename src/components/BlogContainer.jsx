@@ -1,8 +1,7 @@
-import BlogCard from "./BlogCard";
-
 import { useEffect } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
+import BlogCard from "./BlogCard";
+import Error from "./Error";
 import { fetchBlogs } from "../store/actions/blogActions";
 // import action
 
@@ -16,6 +15,7 @@ function BlogContainer() {
   useEffect(() => {
     dispatch(fetchBlogs());
   }, [dispatch]);
+
   return (
     // component
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mb-12">
@@ -28,6 +28,8 @@ function BlogContainer() {
                 Loading...
               </h2>
             </div>
+          ) : error ? (
+            <Error error={error} />
           ) : (
             blogs.map((blog) => <BlogCard key={blog.id} {...blog} />)
           )}
