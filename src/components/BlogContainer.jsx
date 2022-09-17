@@ -1,22 +1,21 @@
 import BlogCard from "./BlogCard";
-import axios from "axios";
-import { useState } from "react";
+
 import { useEffect } from "react";
 
-function BlogContainer() {
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBlogs } from "../store/actions/blogActions";
+// import action
 
-  //fetch blogs from api
-  const fetchBlogs = async () => {
-    const response = await axios.get("http://localhost:3000/blogs");
-    setBlogs(response.data);
-    setLoading(false);
-  };
+function BlogContainer() {
+  const dispatch = useDispatch();
+
+  const blogList = useSelector((state) => state.blogList);
+  const { loading, error, blogs } = blogList;
+  console.log(blogList);
 
   useEffect(() => {
-    fetchBlogs();
-  }, []);
+    dispatch(fetchBlogs());
+  }, [dispatch]);
   return (
     // component
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mb-12">
