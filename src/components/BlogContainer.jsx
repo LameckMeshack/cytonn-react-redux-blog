@@ -10,7 +10,6 @@ function BlogContainer() {
 
   const blogList = useSelector((state) => state.blogList);
   const { loading, error, blogs } = blogList;
-  console.log(blogList);
 
   useEffect(() => {
     dispatch(fetchBlogs());
