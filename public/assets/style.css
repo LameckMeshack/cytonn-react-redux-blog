@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  min-height: 70vh;
+  /* background-color: purple; */
+  flex: 1; /* Or flex-grow: 1;*/
+  /* flex-grow: ; */
+}
