@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BlogComponent from "./components/BlogComponent";
+import BlogContainer from "./components/BlogContainer";
 import Footer from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import Login from "./pages/Login";
@@ -12,7 +13,7 @@ function App() {
         <div className="main">
           <Routes>
             {/* <Route path="/" element=></Route> */}
-            <Route index path="/" element={<h1>Home</h1>} />
+            <Route index path="/" element={<BlogContainer />} />
             <Route path="login" element={<Login />} />
             <Route path="blog/:id" element={<BlogComponent />} />
           </Routes>
