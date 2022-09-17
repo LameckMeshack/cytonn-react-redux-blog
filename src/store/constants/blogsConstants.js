@@ -1,8 +1,13 @@
 // export blog constants
-// fetch blog constants
+// fetch blogs constants
 export const BLOGS_REQUEST = "BLOGS_REQUEST";
 export const BLOGS_SUCCESS = "BLOGS_SUCCESS";
 export const BLOGS_FAIL = "BLOGS_FAIL";
+
+// fetch single blog constants
+export const BLOG_REQUEST = "BLOG_REQUEST";
+export const BLOG_SUCCESS = "BLOG_SUCCESS";
+export const BLOG_FAIL = "BLOG_FAIL";
 
 // create blog constants
 
