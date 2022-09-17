@@ -13,7 +13,7 @@ function BlogCard({ id, title, image }) {
           <h3 className="text-center">
             <Link
               className="text-white text-2xl font-bold text-center"
-              to="blog/:id"
+              to={`/blog/${id}`}
             >
               <span className="absolute inset-0"></span>
               {title || "Blog Title"}
