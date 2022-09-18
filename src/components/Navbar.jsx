@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../Context/authContext";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { user } = useContext(AuthContext);
+  console.log(user.user);
   return (
     <div className="bg-gradient-to-r from-blue-800 to-blue-900">
       <Navbar2 menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
