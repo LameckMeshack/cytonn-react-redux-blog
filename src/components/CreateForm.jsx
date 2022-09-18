@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 function CreateForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  //   const [show, setShow] = useState(false);
   const [blogData, setblogData] = useState({
     title: "",
     body: "",
@@ -30,17 +31,32 @@ function CreateForm() {
 
     // redirect to home
     navigate("/");
+
     // flash message
+    // setShow(true);
+
+    alert("Blog Created Successfully");
   };
   return (
-    <div className="block p-6 rounded-lg shadow-lg mt-6 mx-auto bg-white max-w-md">
-      <form onSubmit={handleSubmit}>
-        <div className="form-group mb-6">
-          <input
-            onChange={handleChange}
-            type="text"
-            name="title"
-            className="form-control block
+    <>
+      {/* {show && (
+        <div class="w-1/2">
+          <div
+            class="px-4 py-4 rounded text-slate-800 bg-slate-300"
+            role="alert"
+          >
+            A simple tailwind css alert message!
+          </div>
+        </div>
+      )} */}
+      <div className="block p-6 rounded-lg shadow-lg mt-6 mx-auto bg-white max-w-md">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group mb-6">
+            <input
+              onChange={handleChange}
+              type="text"
+              name="title"
+              className="form-control block
         w-full
         px-3
         py-1.5
@@ -54,15 +70,15 @@ function CreateForm() {
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-            placeholder="Title"
-          />
-        </div>
-        <div className="form-group mb-6">
-          <input
-            onChange={handleChange}
-            type="link"
-            name="image"
-            className="form-control block
+              placeholder="Title"
+            />
+          </div>
+          <div className="form-group mb-6">
+            <input
+              onChange={handleChange}
+              type="link"
+              name="image"
+              className="form-control block
         w-full
         px-3
         py-1.5
@@ -76,15 +92,15 @@ function CreateForm() {
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-            placeholder="Image Link"
-          />
-        </div>
-        <div className="form-group mb-6">
-          <textarea
-            onChange={handleChange}
-            type="text"
-            name="body"
-            className="
+              placeholder="Image Link"
+            />
+          </div>
+          <div className="form-group mb-6">
+            <textarea
+              onChange={handleChange}
+              type="text"
+              name="body"
+              className="
         form-control
         block
         w-full
@@ -101,14 +117,14 @@ function CreateForm() {
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       "
-            rows="8"
-            placeholder="blog body"
-          ></textarea>
-        </div>
+              rows="8"
+              placeholder="blog body"
+            ></textarea>
+          </div>
 
-        <button
-          type="submit"
-          className="
+          <button
+            type="submit"
+            className="
       w-full
       px-6
       py-2.5
@@ -126,11 +142,12 @@ function CreateForm() {
       transition
       duration-150
       ease-in-out"
-        >
-          create
-        </button>
-      </form>
-    </div>
+          >
+            create
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 
