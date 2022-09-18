@@ -2,15 +2,9 @@
   "blogs": [
     {
       "id": 1,
-      "image": "https://picsum.photos/200/300",
-      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-      "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-    },
-    {
-      "id": 2,
-      "image": "https://pixabay.com/get/g345f4bed233dfd3e11ef280e3c466eed784e0649cf9eda408ea32a7f216b748c20bf3519e2b370aa16f9eea733068bbb68f4cc71dc1891a0eae27fe15a2f15ad_640.jpg",
-      "title": "qui est esse",
-      "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+      "title": "Updating",
+      "body": "1,000,000+ free images\nExplore the world's premier collection of high-quality pictures—submitted by our community of talented contributors and completely free to use for any purpose.",
+      "image": "https://images.unsplash.com/photo-1659945410270-9a24edc932f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
     },
     {
       "id": 3,
@@ -31,22 +25,10 @@
       "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
     },
     {
-      "id": 6,
-      "image": "https://picsum.photos/200/300",
-      "title": "dolorem eum magni eos aperiam quia",
-      "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae"
-    },
-    {
       "id": 7,
       "image": "https://images.unsplash.com/photo-1659849025892-f9318988ad00?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3435&q=80",
       "title": "magnam facilis autem",
       "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas"
-    },
-    {
-      "id": 8,
-      "image": "https://picsum.photos/200/300",
-      "title": "dolorem dolore est ipsam",
-      "body": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae"
     },
     {
       "id": 9,
@@ -65,6 +47,24 @@
       "image": "https://images.unsplash.com/photo-1623479322729-28b25c16b011?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80",
       "title": "optio molestias id quia eum",
       "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
+    },
+    {
+      "title": "Pre-requisites Title",
+      "body": "Pre-requisites\nTUK components have been designed using **Tailwind CSS >= v2.0.3**. Make sure that you have the latest version of Tailwind CSS installed.\n\nInstalling/Updating Tailwind CSS\nInstall/update Tailwind CSS using your preferred package manager.",
+      "image": "https://images.unsplash.com/photo-1659945410270-9a24edc932f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+      "id": 12
+    },
+    {
+      "title": "The great body this is the body",
+      "body": "The greate body this is the bodyThe greate body this is the bodyThe greate body this is the bodyThe greate body this is the bodyThe greate body this is the bodyThe greate body this is the bodyThe greate body this is the bodyThe greate body this is the body",
+      "image": "https://images.unsplash.com/photo-1659945410270-9a24edc932f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+      "id": 14
+    },
+    {
+      "title": "The greate body this is the body",
+      "body": "The greate body this is the bodyThe greate body this is the bodyThe greate body this is the bodyThe greate body this is the bodyThe greate body this is the bodyThe greate body this is the bodyThe greate body this is the body",
+      "image": "https://images.unsplash.com/photo-1659945410270-9a24edc932f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+      "id": 15
     }
   ]
 }
