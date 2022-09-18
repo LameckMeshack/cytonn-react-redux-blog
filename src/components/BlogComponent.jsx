@@ -1,11 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { fetchBlog } from "../store/actions/blogActions";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { deleteBlog, fetchBlog } from "../store/actions/blogActions";
 import Error from "./Error";
 
 function BlogComponent() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
   const id = params.id;
@@ -18,6 +19,14 @@ function BlogComponent() {
     // function to filter blog
     dispatch(fetchBlog(id));
   }, [dispatch, id]);
+
+  const goToUpdate = () => {
+    navigate(`/update/${id}`);
+  };
+  const handleDelete = () => {
+    dispatch(deleteBlog(id));
+    navigate("/");
+  };
 
   return (
     <div>
@@ -79,6 +88,20 @@ function BlogComponent() {
             <div className="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
               <div className="border-l-4 border-gray-500 pl-4 mb-6 italic rounded">
                 {blog.body}
+              </div>
+              <div className="flex w-1/2 m-auto  space-between items-center">
+                <button
+                  onClick={goToUpdate}
+                  className="bg-green-400 mr-5 hover:bg-grey text-grey-darkest font-bold py-2 px-4 rounded "
+                >
+                  update
+                </button>
+                <button
+                  onClick={handleDelete}
+                  className="bg-red-400 hover:bg-grey text-grey-darkest font-bold py-2 px-4 rounded "
+                >
+                  delete
+                </button>
               </div>
             </div>
           </main>
