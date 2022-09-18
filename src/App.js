@@ -1,8 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BlogComponent from "./components/BlogComponent";
 import BlogContainer from "./components/BlogContainer";
+import CreateForm from "./components/CreateForm";
 import Footer from "./components/Footer";
 import { Navbar } from "./components/Navbar";
+import UpdateForm from "./components/Update";
 import Login from "./pages/Login";
 
 function App() {
@@ -16,6 +18,9 @@ function App() {
             <Route index path="/" element={<BlogContainer />} />
             <Route path="login" element={<Login />} />
             <Route path="blog/:id" element={<BlogComponent />} />
+            <Route path="create" element={<CreateForm />} />
+            <Route path="update/:id" element={<UpdateForm />} />
+            <Route path="*" element={<h1>404</h1>} />
           </Routes>
         </div>
         <Footer />

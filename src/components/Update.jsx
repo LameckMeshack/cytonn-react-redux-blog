@@ -14,7 +14,7 @@ function UpdateForm() {
 
   //get the blog from the store
   const UpdateData = useSelector((state) => state.blog);
-  const { blog: initial } = UpdateData;
+  const { blog } = UpdateData;
 
   const [blogData, setblogData] = useState({
     id: params.id,
