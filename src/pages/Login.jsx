@@ -1,7 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../store/actions/authActions";
 
 function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [loginData, setloginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setloginData({ ...loginData, [e.target.name]: e.target.value });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(login(loginData));
+    console.log(loginData);
+    navigate("/");
+  };
+
   return (
     <section className="py-26 bg-white">
       <div className="container px-4 mx-auto">
@@ -14,7 +34,7 @@ function Login() {
               Sign in
             </h2>
           </div>
-          <form action="">
+          <form onSubmit={handleLogin}>
             <div className="mb-6">
               <label className="block mb-2 font-extrabold" htmlFor="">
                 Email
@@ -22,6 +42,9 @@ function Login() {
               <input
                 className="inline-block w-full p-4 leading-6 text-lg font-extrabold placeholder-indigo-900 bg-white shadow border-2 border-indigo-900 rounded"
                 type="email"
+                required
+                name="email"
+                onChange={handleChange}
                 placeholder="email"
               />
             </div>
@@ -32,6 +55,9 @@ function Login() {
               <input
                 className="inline-block w-full p-4 leading-6 text-lg font-extrabold placeholder-indigo-900 bg-white shadow border-2 border-indigo-900 rounded"
                 type="password"
+                required
+                name="password"
+                onChange={handleChange}
                 placeholder="**********"
               />
             </div>
@@ -52,7 +78,10 @@ function Login() {
                 </Link>
               </div>
             </div>
-            <button className="inline-block w-full py-4 px-6 mb-6 text-center text-lg leading-6 text-white font-extrabold bg-indigo-800 hover:bg-indigo-900 border-3 border-indigo-900 shadow rounded transition duration-200">
+            <button
+              type="submit"
+              className="inline-block w-full py-4 px-6 mb-6 text-center text-lg leading-6 text-white font-extrabold bg-indigo-800 hover:bg-indigo-900 border-3 border-indigo-900 shadow rounded transition duration-200"
+            >
               Sign in
             </button>
             <p className="text-center font-extrabold">
