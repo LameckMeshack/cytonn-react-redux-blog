@@ -7,6 +7,10 @@ import {
   BLOG_REQUEST,
   BLOG_SUCCESS,
   BLOG_FAIL,
+  BLOG_CREATE_REQUEST,
+  BLOG_CREATE_SUCCESS,
+  BLOG_CREATE_FAIL,
+  BLOG_CREATE_RESET,
 } from "../constants/blogsConstants";
 
 //initial blogs state
@@ -61,6 +65,36 @@ export const fetchBlogReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+//create  a blog reducer
+export const createBlogReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case BLOG_CREATE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case BLOG_CREATE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        blogs: action.payload,
+      };
+    case BLOG_CREATE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case BLOG_CREATE_RESET:
+      return {
+        ...state,
+        blog: {},
       };
     default:
       return state;

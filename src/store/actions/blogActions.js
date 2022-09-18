@@ -7,6 +7,10 @@ import {
   BLOG_FAIL,
   BLOG_SUCCESS,
   BLOG_REQUEST,
+  BLOG_CREATE_REQUEST,
+  BLOG_CREATE_SUCCESS,
+  BLOG_CREATE_FAIL,
+  BLOG_CREATE_RESET,
 } from "../constants/blogsConstants";
 
 // fetching all blogs
@@ -47,6 +51,45 @@ export const fetchBlog = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: BLOG_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+//create a blog
+export const createBlog = (blog) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: BLOG_CREATE_REQUEST,
+    });
+
+    // const {
+    //   userLogin: { userInfo },
+    // } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.post(
+      "http://localhost:3000/blogs",
+      blog,
+      config
+    );
+
+    dispatch({
+      type: BLOG_CREATE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: BLOG_CREATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
