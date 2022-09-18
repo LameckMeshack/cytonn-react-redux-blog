@@ -1,12 +1,45 @@
 import React from "react";
+import { useState } from "react";
+import { createBlog } from "../store/actions/blogActions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function CreateForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [blogData, setblogData] = useState({
+    title: "",
+    body: "",
+    image: "",
+  });
+
+  const handleChange = (e) => {
+    setblogData({ ...blogData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // dispatch action
+    dispatch(createBlog(blogData));
+    // clearing the form
+    setblogData({
+      title: "",
+      body: "",
+      image: "",
+    });
+
+    // redirect to home
+    navigate("/");
+    // flash message
+  };
   return (
     <div className="block p-6 rounded-lg shadow-lg mt-6 mx-auto bg-white max-w-md">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group mb-6">
           <input
+            onChange={handleChange}
             type="text"
+            name="title"
             className="form-control block
         w-full
         px-3
@@ -26,7 +59,9 @@ function CreateForm() {
         </div>
         <div className="form-group mb-6">
           <input
+            onChange={handleChange}
             type="link"
+            name="image"
             className="form-control block
         w-full
         px-3
@@ -46,6 +81,9 @@ function CreateForm() {
         </div>
         <div className="form-group mb-6">
           <textarea
+            onChange={handleChange}
+            type="text"
+            name="body"
             className="
         form-control
         block
