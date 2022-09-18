@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { updateBlog } from "../store/actions/blogActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { fetchBlog, updateBlog } from "../store/actions/blogActions";
 
 function UpdateForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //   const [show, setShow] = useState(false);
+  const params = useParams();
+  //get the id from the url
+  const id = params.id;
+  // console.log(id);
+
+  //get the blog from the store
+  const UpdateData = useSelector((state) => state.blog);
+  const { blog: initial } = UpdateData;
+
   const [blogData, setblogData] = useState({
+    id: params.id,
     title: "",
     body: "",
     image: "",
   });
+
+  useEffect(() => {
+    // function to filter blog
+    dispatch(fetchBlog(id));
+  }, [dispatch, id]);
 
   const handleChange = (e) => {
     setblogData({ ...blogData, [e.target.name]: e.target.value });
@@ -32,29 +46,19 @@ function UpdateForm() {
     // redirect to home
     navigate("/");
 
-    // flash message
-    // setShow(true);
-
     alert("Blog Updated Successfully");
   };
+
   return (
     <>
-      {/* {show && (
-        <div class="w-1/2">
-          <div
-            class="px-4 py-4 rounded text-slate-800 bg-slate-300"
-            role="alert"
-          >
-            A simple tailwind css alert message!
-          </div>
-        </div>
-      )} */}
       <div className="block p-6 rounded-lg shadow-lg mt-6 mx-auto bg-white max-w-md">
         <form onSubmit={handleSubmit}>
           <div className="form-group mb-6">
             <input
               onChange={handleChange}
               type="text"
+              // edittable
+              // value={initial.title}
               name="title"
               className="form-control block
         w-full
@@ -76,6 +80,7 @@ function UpdateForm() {
           <div className="form-group mb-6">
             <input
               onChange={handleChange}
+              // value={initial.image}
               type="link"
               name="image"
               className="form-control block
@@ -93,13 +98,16 @@ function UpdateForm() {
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               placeholder="Image Link"
-            />
+            >
+              {/* hello */}
+            </input>
           </div>
           <div className="form-group mb-6">
             <textarea
               onChange={handleChange}
               type="text"
               name="body"
+              // value={initial.body}
               className="
         form-control
         block
