@@ -3,9 +3,9 @@ import BlogComponent from "./components/BlogComponent";
 import BlogContainer from "./components/BlogContainer";
 import CreateForm from "./components/CreateForm";
 import Footer from "./components/Footer";
-import { Navbar } from "./components/Navbar";
 import UpdateForm from "./components/Update";
 import Login from "./pages/Login";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
