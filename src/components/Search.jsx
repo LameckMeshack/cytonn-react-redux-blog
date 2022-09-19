@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -6,6 +5,7 @@ import { Link } from "react-router-dom";
 function Search() {
   const blogList = useSelector((state) => state.blogList);
   const [searchResults, setsearchResults] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const { loading, error, blogs } = blogList;
   //search by filtering from the store and displaying the result
   const handleSearch = (e) => {
