@@ -1,90 +1,128 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/authContext";
+import { USER_LOGOUT } from "../store/constants/authConstants";
 
-export const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+function Navbar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const [navbar, setNavbar] = useState(false);
   const { user } = useContext(AuthContext);
-  console.log(user.user);
+  // let name = user.user?.name;
+  // console.log(name);
+
+  //logout
+  const handleLogout = () => {
+    dispatch({ type: USER_LOGOUT });
+    navigate("/");
+  };
+
   return (
-    <div className="bg-gradient-to-r from-blue-800 to-blue-900">
-      <Navbar2 menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      {menuOpen && <MobileMenu>{navLinks}</MobileMenu>}
-    </div>
+    <nav className="w-full bg-blue-800 shadow">
+      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+        <div>
+          <div className="flex items-center justify-between py-3 md:py-5 md:block">
+            <Link to="/">
+              <h2 className="text-2xl font-bold text-white">CYBLOG</h2>
+            </Link>
+            <div className="md:hidden">
+              <button
+                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                onClick={() => setNavbar(!navbar)}
+              >
+                {navbar ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-white"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+              navbar ? "block" : "hidden"
+            }`}
+          >
+            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+              <li className="text-white hover:text-indigo-200">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="text-white hover:text-indigo-200">
+                <Link to="create">Create</Link>
+              </li>
+              <li className="text-white hover:text-indigo-200">
+                {/* <Link to="/">About US</Link> */}
+                <p>{user ? user.user?.name : "Not Logged in"}</p>
+              </li>
+              <li className="text-white hover:text-indigo-200">
+                <Link to="/">Contact US</Link>
+              </li>
+            </ul>
+
+            <div className="mt-3 space-y-2 lg:hidden md:inline-block">
+              <Link
+                to="login"
+                className="inline-block w-full px-4 py-2 text-center text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+              >
+                Login
+              </Link>
+              {/* <Link
+                to="javascript:void(0)"
+                className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
+              >
+                Sign up
+              </Link> */}
+            </div>
+          </div>
+        </div>
+        <div className="hidden space-x-2 md:inline-block">
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="login"
+              className="px-4 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+            >
+              Login
+            </Link>
+          )}
+        </div>
+      </div>
+    </nav>
   );
-};
+}
 
-const pages = ["login", "blogs", "about", "contact"];
-const navLinks = pages.map((page) => (
-  <NavLink
-    key={page}
-    className="no-underline white font-semibold hover:white"
-    to={`${page}`}
-  >
-    {page}
-  </NavLink>
-));
-
-const Navbar2 = ({ menuOpen, setMenuOpen }) => (
-  <div className="flex items-center justify-between p-4">
-    <div className="flex items-center">
-      <FireSvg />
-      <NavLink
-        to="/"
-        className="text-xl font-bold no-underline white hover:white"
-      >
-        CytonnBlog
-      </NavLink>
-    </div>
-    <nav className="hidden md:block space-x-6">{navLinks}</nav>
-    <button
-      type="button"
-      aria-label="Toggle mobile menu"
-      onClick={() => setMenuOpen(!menuOpen)}
-      className="rounded md:hidden focus:outline-none focus:ring focus:ring-white-500 focus:ring-opacity-50"
-    >
-      <MenuAlt4Svg menuOpen={menuOpen} />
-    </button>
-  </div>
-);
-
-const MobileMenu = ({ children }) => (
-  <NavLink className="p-4 flex flex-col space-y-3 md:hidden ">
-    {/* check weather its active */}
-
-    {children}
-  </NavLink>
-);
-
-const FireSvg = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-10 w-10"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-  >
-    <path
-      fillRule="evenodd"
-      d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-const MenuAlt4Svg = ({ menuOpen }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className={`transition duration-100 ease h-8 w-8 ${
-      menuOpen ? "transform rotate-90" : ""
-    }`}
-    viewBox="0 0 20 20"
-    fill="currentColor"
-  >
-    <path
-      fillRule="evenodd"
-      d="M3 7a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
+export default Navbar;
